@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
+          scrolledUnderElevation: 0,
+          
             elevation: 0,
             color: Color(0xffFCFCFC),
             centerTitle: true,

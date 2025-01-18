@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/views/Signup/signup_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,8 +9,10 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
+        title: const Text("Login"),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios,color: Colors.black,),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -180,9 +183,27 @@ class LoginPage extends StatelessWidget {
                         ))),
               ],
             ),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * .03,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("Don't have an acount?",style: Theme.of(context).textTheme.bodySmall,),TextButton(onPressed: (){}, child: const Text("Register!"))],)
+              children: [
+                Text(
+                  "Don't have an acount?",
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupPage(),
+                          ));
+                    },
+                    child: const Text("Register!"))
+              ],
+            )
           ],
         ),
       ),
