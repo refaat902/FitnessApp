@@ -10,11 +10,11 @@ void main() async {
   // await Firebase.initializeApp();
   // DioHelper.init();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
               )),
           filled: true,
           contentPadding: EdgeInsets.symmetric(
-              vertical: MediaQuery.sizeOf(context).height * .026,
+              vertical: MediaQuery.sizeOf(context).height * .02,
               horizontal: MediaQuery.sizeOf(context).width * .06),
           border: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0xff696969)),
@@ -65,29 +65,29 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.normal),
             labelLarge: GoogleFonts.montserrat(
                 color: const Color(0xff3A4750),
-                fontSize: 25,
+                fontSize: 16,
                 fontWeight: FontWeight.w500),
             labelMedium: GoogleFonts.montserrat(
                 color: const Color(0xff303841),
                 fontWeight: FontWeight.w500,
-                fontSize: 20),
+                fontSize: 14),
             bodySmall: GoogleFonts.dmSans(
                 color: const Color(0xff3A4750),
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: FontWeight.w500)),
         textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(
               foregroundColor: const WidgetStatePropertyAll(Colors.black),
                 textStyle: WidgetStatePropertyAll(GoogleFonts.montserrat(
-                    fontSize: 22,
+                    fontSize: 14,
                     fontWeight: FontWeight.w600)))),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-              padding: WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: MediaQuery.sizeOf(context).height*.02)),
+              padding: WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: MediaQuery.sizeOf(context).height*.01)),
                 foregroundColor: const WidgetStatePropertyAll(Colors.white),
                 textStyle: WidgetStatePropertyAll(
                   GoogleFonts.bebasNeue(
-                    fontSize: 24, fontWeight: FontWeight.normal)),
+                    fontSize: 22, fontWeight: FontWeight.normal)),
                 backgroundColor:
                     const WidgetStatePropertyAll(Color(0xff289004)),
                 shape: WidgetStatePropertyAll(RoundedRectangleBorder(

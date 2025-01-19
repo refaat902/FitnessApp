@@ -377,7 +377,7 @@ class SignupPage extends StatelessWidget {
                                   child: const Text("Create Account"))),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .03),
+                      SizedBox(height: MediaQuery.sizeOf(context).height * .02),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -387,7 +387,7 @@ class SignupPage extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .02),
+                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
                       Row(
                         children: [
                           Expanded(
@@ -405,7 +405,7 @@ class SignupPage extends StatelessWidget {
                                         Text("Connect with Google",
                                             style: GoogleFonts.montserrat(
                                                 color: const Color(0xff303841),
-                                                fontSize: 18)),
+                                                fontSize: 14)),
                                       ],
                                     ),
                                   ))),
@@ -428,7 +428,7 @@ class SignupPage extends StatelessWidget {
                                         SizedBox(width: MediaQuery.sizeOf(context).width * .2),
                                         Text("Connect with Facebook",
                                             style: GoogleFonts.montserrat(
-                                                color: Colors.white, fontSize: 18)),
+                                                color: Colors.white, fontSize: 14)),
                                       ],
                                     ),
                                   ))),
