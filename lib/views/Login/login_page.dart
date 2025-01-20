@@ -213,6 +213,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/views/Signup/signup_page.dart';
 import 'package:flutter_application_1/views/forgotpass/forgot_pass_page.dart';
+import 'package:flutter_application_1/views/questions/age/age_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatelessWidget {
@@ -327,7 +328,8 @@ class LoginPage extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const ForgotPassPage(),
+                                      builder: (context) =>
+                                          const ForgotPassPage(),
                                     ));
                               },
                               child: const Text("Forgot Password?"))
@@ -340,7 +342,9 @@ class LoginPage extends StatelessWidget {
                         children: [
                           Expanded(
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AgePage(),));
+                                  },
                                   child: const Text("LOGIN"))),
                         ],
                       ),
