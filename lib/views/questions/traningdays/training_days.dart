@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/views/navigation/navigation_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TrainingDays extends StatefulWidget {
@@ -84,7 +85,10 @@ class _TrainingDaysState extends State<TrainingDays> {
               children: [
                 Expanded(
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text("Finish Steps"))),
+                        onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const NavigationPage(),));
+                        },
+                        child: const Text("Finish Steps"))),
               ],
             ),
           ],
