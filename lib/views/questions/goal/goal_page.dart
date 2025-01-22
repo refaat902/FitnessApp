@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/age/age_page.dart';
@@ -38,17 +39,21 @@ class _GoalPageState extends State<GoalPage> {
           children: [
             Row(
               children: [
-                Text(
-                  "Step 8 of 9",
-                  style: Theme.of(context).textTheme.bodySmall,
+                Expanded(
+                  child: AutoSizeText(
+                    "Step 8 of 9",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ],
             ),
             Row(
               children: [
-                Text(
-                  "What's your goal?",
-                  style: Theme.of(context).textTheme.titleLarge,
+                Expanded(
+                  child: AutoSizeText(
+                    "What's your goal?",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
               ],
             ),

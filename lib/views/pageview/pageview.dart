@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
@@ -123,7 +124,11 @@ class _PageViewWithSliderState extends State<PageViewWithSlider> {
                         ),
                       ),
                       onPressed: () {
-Navigator.push(context, CustomPageRoute(page: const LoginPage(),transitionType: TransitionType.fade));
+                        Navigator.push(
+                            context,
+                            CustomPageRoute(
+                                page: const LoginPage(),
+                                transitionType: TransitionType.fade));
                       },
                       child: const Text(
                         "Finished",
@@ -167,8 +172,8 @@ class OnBoarding4 extends StatelessWidget {
             Image.asset('assets/images/OnBoarding1.png'),
           ],
         ),
-        RichText(
-          text: const TextSpan(
+        const AutoSizeText.rich(
+          TextSpan(
             text: 'Healthy Muscular ',
             style: TextStyle(
               color: Colors.black,
@@ -218,8 +223,8 @@ class OnBoarding2 extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * .02,
         ),
-        RichText(
-          text: const TextSpan(
+        const AutoSizeText.rich(
+          TextSpan(
             text: 'PERFECT BODY ',
             style: TextStyle(
               color: Colors.black,
@@ -276,8 +281,8 @@ class OnBoarding3 extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * .02,
         ),
-        RichText(
-          text: const TextSpan(
+        const AutoSizeText.rich(
+          TextSpan(
             text: 'PERFECT BODY ',
             style: TextStyle(
               color: Colors.black,
@@ -334,8 +339,8 @@ class OnBoarding1 extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * .02,
         ),
-        RichText(
-          text: const TextSpan(
+        const AutoSizeText.rich(
+          TextSpan(
             text: 'PERFECT BODY ',
             style: TextStyle(
               color: Colors.black,

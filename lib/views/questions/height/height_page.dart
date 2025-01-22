@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/bodyfat/body_fat_page.dart';
@@ -47,17 +48,21 @@ class _HeightPageState extends State<HeightPage> {
             children: [
               Row(
                 children: [
-                  Text(
-                    "Step 4 of 9",
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Expanded(
+                    child: AutoSizeText(
+                      "Step 4 of 9",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   )
                 ],
               ),
               Row(
                 children: [
-                  Text(
-                    "how much do you height?",
-                    style: Theme.of(context).textTheme.titleLarge,
+                  Expanded(
+                    child: AutoSizeText(
+                      "how much do you height?",
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   )
                 ],
               ),

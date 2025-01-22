@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/userprofile/user_profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -49,7 +51,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('assets/images/person.png'),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(context, CustomPageRoute(page: const UserProfilePage(),transitionType: TransitionType.slide));
+                                },
+                                icon: Image.asset('assets/images/person.png')),
                             Row(
                               children: [
                                 Text(
@@ -136,7 +142,7 @@ class HomePage extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        "Fit young woman doing",
+                                        "Fit young woman doing ",
                                         style: GoogleFonts.bebasNeue(
                                             color: Colors.white,
                                             fontSize: 17,
@@ -167,8 +173,7 @@ class HomePage extends StatelessWidget {
                                               backgroundColor:
                                                   const WidgetStatePropertyAll(
                                                       Color(0xffFABC06))),
-                                          onPressed: () {
-                                          },
+                                          onPressed: () {},
                                           child: Text(
                                             "Start Exercise",
                                             style: GoogleFonts.dmSans(
@@ -186,9 +191,9 @@ class HomePage extends StatelessWidget {
                   ),
                   Image.asset('assets/images/person2.png'),
                   Positioned(
-                    top: MediaQuery.sizeOf(context).height*.14,
-                    right: MediaQuery.sizeOf(context).width*.2,
-                    child: Image.asset('assets/images/dumbbells.png')),
+                      top: MediaQuery.sizeOf(context).height * .14,
+                      right: MediaQuery.sizeOf(context).width * .2,
+                      child: Image.asset('assets/images/dumbbells.png')),
                 ],
               ),
             ),

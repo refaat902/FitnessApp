@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/fitnesslevel/fitness_level_page.dart';
@@ -48,17 +49,21 @@ class _MuscleMassPageState extends State<MuscleMassPage> {
             children: [
               Row(
                 children: [
-                  Text(
-                    "Step 6 of 9",
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Expanded(
+                    child: AutoSizeText(
+                      "Step 6 of 9",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   )
                 ],
               ),
               Row(
                 children: [
-                  Text(
-                    "what's your muscle mass?",
-                    style: Theme.of(context).textTheme.titleLarge,
+                  Expanded(
+                    child: AutoSizeText(
+                      "what's your muscle mass?",
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   )
                 ],
               ),

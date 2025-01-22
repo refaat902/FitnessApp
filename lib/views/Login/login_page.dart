@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/Signup/signup_page.dart';
@@ -44,9 +45,11 @@ class LoginPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            "WELCOME TO PRO FITNESS!",
-                            style: Theme.of(context).textTheme.titleLarge,
+                          Expanded(
+                            child: AutoSizeText(
+                              "WELCOME TO PRO FITNESS!",
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
                           ),
                         ],
                       ),
@@ -55,17 +58,11 @@ class LoginPage extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            "Hello there, sign in to",
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "continue",
-                            style: Theme.of(context).textTheme.bodySmall,
+                          Expanded(
+                            child: AutoSizeText(
+                              "Hello there, sign in to continue",
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
                           ),
                         ],
                       ),

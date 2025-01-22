@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/weight/weight_page.dart';
@@ -37,17 +38,21 @@ class _AgePageState extends State<AgePage> {
           children: [
             Row(
               children: [
-                Text(
-                  "Step 1 of 9",
-                  style: Theme.of(context).textTheme.bodySmall,
+                Expanded(
+                  child: AutoSizeText(
+                    "Step 1 of 9",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 )
               ],
             ),
             Row(
               children: [
-                Text(
-                  "How old Are you?",
-                  style: Theme.of(context).textTheme.titleLarge,
+                Expanded(
+                  child: AutoSizeText(
+                    "How old Are you?",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 )
               ],
             ),

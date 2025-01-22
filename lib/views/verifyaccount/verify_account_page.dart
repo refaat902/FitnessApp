@@ -1,5 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/views/Signup/signup_page.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -42,27 +42,22 @@ class VerifyAccountPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            "Verify your account by entering verifition",
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: "code we sent to ",
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                              TextSpan(
-                                  text: "johnwelles@gmail.com",
-                                  style: GoogleFonts.dmSans(
-                                      color: const Color(0xff289004),
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500))
-                            ]),
+                          Expanded(
+                            child: AutoSizeText.rich(
+                              TextSpan(children: [
+                                TextSpan(
+                                  text:
+                                      "Verify your account by entering verifition code we sent to ",
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                                TextSpan(
+                                    text: "johnwelles@gmail.com",
+                                    style: GoogleFonts.dmSans(
+                                        color: const Color(0xff289004),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500))
+                              ]),
+                            ),
                           ),
                         ],
                       ),
@@ -70,21 +65,17 @@ class VerifyAccountPage extends StatelessWidget {
                         height: MediaQuery.sizeOf(context).height * .02,
                       ),
                       OtpTextField(
-                        cursorColor:
-                            const Color(0xff289004), 
+                        cursorColor: const Color(0xff289004),
                         textStyle: const TextStyle(
                           color: Color(0xff289004),
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                        ), 
+                        ),
                         numberOfFields: 4,
-                        fieldWidth: MediaQuery.sizeOf(context).width*.2, 
-                        borderRadius:
-                            BorderRadius.circular(10),
-                        borderColor:
-                            const Color(0xff289004), 
-                        focusedBorderColor:
-                            const Color(0xff289004), 
+                        fieldWidth: MediaQuery.sizeOf(context).width * .2,
+                        borderRadius: BorderRadius.circular(10),
+                        borderColor: const Color(0xff289004),
+                        focusedBorderColor: const Color(0xff289004),
                         showFieldAsBox: true,
                         onCodeChanged: (String code) {},
                         onSubmit: (String verificationCode) {},

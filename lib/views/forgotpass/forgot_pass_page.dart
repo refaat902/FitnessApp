@@ -1,9 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
-import 'package:flutter_application_1/views/Signup/signup_page.dart';
-import 'package:flutter_application_1/views/questions/age/age_page.dart';
 import 'package:flutter_application_1/views/verifyaccount/verify_account_page.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ForgotPassPage extends StatelessWidget {
   const ForgotPassPage({super.key});
@@ -25,8 +23,8 @@ class ForgotPassPage extends StatelessWidget {
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("Forgot Password",
-                  style: Theme.of(context).textTheme.titleLarge),
+              title: AutoSizeText("Forgot Password",
+                  maxLines: 1, style: Theme.of(context).textTheme.titleLarge),
               background: Container(color: const Color(0xffFCFCFC)),
             ),
           ),
@@ -44,17 +42,11 @@ class ForgotPassPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            "Please enter your email below to recive",
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "your passwod rest code.",
-                            style: Theme.of(context).textTheme.bodySmall,
+                          Expanded(
+                            child: AutoSizeText(
+                              'Please enter your email below to receive your password reset code',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
                           ),
                         ],
                       ),
@@ -86,7 +78,12 @@ class ForgotPassPage extends StatelessWidget {
                           Expanded(
                               child: ElevatedButton(
                                   onPressed: () {
-Navigator.push(context, CustomPageRoute(page: const VerifyAccountPage(),transitionType: TransitionType.fade));
+                                    Navigator.push(
+                                        context,
+                                        CustomPageRoute(
+                                            page: const VerifyAccountPage(),
+                                            transitionType:
+                                                TransitionType.fade));
                                   },
                                   child: const Text("rest password"))),
                         ],

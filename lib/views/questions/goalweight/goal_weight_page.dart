@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/age/age_page.dart';
@@ -48,17 +49,21 @@ class _GoalWeightPageState extends State<GoalWeightPage> {
             children: [
               Row(
                 children: [
-                  Text(
-                    "Step 3 of 9",
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Expanded(
+                    child: AutoSizeText(
+                      "Step 3 of 9",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   )
                 ],
               ),
               Row(
                 children: [
-                  Text(
-                    "what's your goal weight?",
-                    style: Theme.of(context).textTheme.titleLarge,
+                  Expanded(
+                    child: AutoSizeText(
+                      "what's your goal weight?",
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   )
                 ],
               ),
