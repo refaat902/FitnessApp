@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/bodyfat/body_fat_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -135,11 +136,7 @@ class _HeightPageState extends State<HeightPage> {
                   Expanded(
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const BodyFatPage(),
-                                ));
+Navigator.push(context, CustomPageRoute(page: const BodyFatPage(),transitionType: TransitionType.fade));
                           },
                           child: const Text("Next Step"))),
                 ],

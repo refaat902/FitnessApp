@@ -1,6 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/Login/login_page.dart';
+import 'package:flutter_application_1/views/questions/age/age_page.dart';
 
 class PageViewWithSlider extends StatefulWidget {
   const PageViewWithSlider({super.key});
@@ -121,11 +123,7 @@ class _PageViewWithSliderState extends State<PageViewWithSlider> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginPage(),
-                            ));
+Navigator.push(context, CustomPageRoute(page: const LoginPage(),transitionType: TransitionType.fade));
                       },
                       child: const Text(
                         "Finished",

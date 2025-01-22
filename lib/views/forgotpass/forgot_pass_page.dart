@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/Signup/signup_page.dart';
+import 'package:flutter_application_1/views/questions/age/age_page.dart';
 import 'package:flutter_application_1/views/verifyaccount/verify_account_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -84,12 +86,7 @@ class ForgotPassPage extends StatelessWidget {
                           Expanded(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                               VerifyAccountPage(),
-                                        ));
+Navigator.push(context, CustomPageRoute(page: const VerifyAccountPage(),transitionType: TransitionType.fade));
                                   },
                                   child: const Text("rest password"))),
                         ],

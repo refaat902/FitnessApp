@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/navigation/navigation_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -86,7 +87,7 @@ class _TrainingDaysState extends State<TrainingDays> {
                 Expanded(
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const NavigationPage(),));
+                          Navigator.pushReplacement(context, CustomPageRoute(page: const NavigationPage(),transitionType: TransitionType.fade));
                         },
                         child: const Text("Finish Steps"))),
               ],

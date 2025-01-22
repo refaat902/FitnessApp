@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/fitnesslevel/fitness_level_page.dart';
 import 'package:flutter_application_1/views/questions/goalweight/goal_weight_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -136,11 +137,7 @@ class _MuscleMassPageState extends State<MuscleMassPage> {
                   Expanded(
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const FitnessLevelPage(),
-                                ));
+Navigator.push(context, CustomPageRoute(page: const FitnessLevelPage(),transitionType: TransitionType.fade));
                           },
                           child: const Text("Next Step"))),
                 ],

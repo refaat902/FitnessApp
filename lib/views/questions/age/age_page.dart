@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/weight/weight_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -99,7 +100,7 @@ class _AgePageState extends State<AgePage> {
                 Expanded(
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const WeightPage(),));
+                         Navigator.push(context, CustomPageRoute(page: const WeightPage(),transitionType: TransitionType.fade));
                         },
                         child: const Text("Next Step"))),
               ],
