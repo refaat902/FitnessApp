@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/navigation/home/favorites/favorites_page.dart';
 import 'package:flutter_application_1/views/userprofile/user_profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,9 +19,11 @@ class HomePage extends StatelessWidget {
             centerTitle: false,
             actions: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, CustomPageRoute(page: const FavoritesPage(),transitionType: TransitionType.slide));
+                  },
                   icon: const Icon(
-                    Icons.notifications_outlined,
+                    Icons.favorite_border_outlined,
                     color: Colors.white,
                   ))
             ],
@@ -53,7 +56,12 @@ class HomePage extends StatelessWidget {
                           children: [
                             IconButton(
                                 onPressed: () {
-                                  Navigator.push(context, CustomPageRoute(page: const UserProfilePage(),transitionType: TransitionType.slide));
+                                  Navigator.push(
+                                      context,
+                                      CustomPageRoute(
+                                          page: const UserProfilePage(),
+                                          transitionType:
+                                              TransitionType.slide));
                                 },
                                 icon: Image.asset('assets/images/person.png')),
                             Row(
