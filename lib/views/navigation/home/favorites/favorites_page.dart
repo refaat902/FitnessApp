@@ -16,7 +16,7 @@ class FavoritesPage extends StatelessWidget {
               SliverAppBar(
                 title: const Text("My Favorites"),
                 leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
+                  icon: const Icon(Icons.arrow_back_ios,color: Colors.black,),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
