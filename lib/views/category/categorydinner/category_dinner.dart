@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
-import 'package:flutter_application_1/views/category/categorybreakfast/data/cubit/meals_cubit.dart';
-import 'package:flutter_application_1/views/category/categorybreakfast/widgets/bloc_list_breakfast.dart';
 import 'package:flutter_application_1/views/category/categorydinner/data/cubit/dinner_cubit.dart';
 import 'package:flutter_application_1/views/category/categorydinner/widgets/bloc_list_dinner.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/data/cubit/add_to_fav_meal_cubit.dart';
@@ -50,6 +48,7 @@ class _CategoryDinnerPageState extends State<CategoryDinnerPage> {
   ],
   child: const BlocListDinner(
     showArrowBack: true,
+    tabIndex: 2,
   ),
 )
 

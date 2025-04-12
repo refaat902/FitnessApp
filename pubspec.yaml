@@ -102,6 +102,9 @@ flutter:
     - assets/images/carb.png
     - assets/images/lipid.png
     - assets/animations/fav.json
+    - assets/images/level.png
+    - assets/images/folder.png
+    - assets/images/kettlebell.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

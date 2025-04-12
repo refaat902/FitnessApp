@@ -11,7 +11,8 @@ import 'package:lottie/lottie.dart';
 
 class BlocListDinner extends StatefulWidget {
   final bool showArrowBack;
-  const BlocListDinner({super.key, required this.showArrowBack});
+  final int tabIndex;
+  const BlocListDinner({super.key, required this.showArrowBack, required this.tabIndex});
 
   @override
   State<BlocListDinner> createState() => _BlocListDinnerState();
@@ -50,8 +51,9 @@ class _BlocListDinnerState extends State<BlocListDinner>
             builder: (context, favState) {
               Set<String> favoriteIds = {};
               if (favState is FavMealSuccessState) {
-                favoriteIds =
-                    favState.favMealList.map((meal) => meal.id.toString()).toSet();
+                favoriteIds = favState.favMealList
+                    .map((meal) => meal.id.toString())
+                    .toSet();
               }
 
               return ListView.builder(
@@ -86,6 +88,7 @@ class _BlocListDinnerState extends State<BlocListDinner>
                                   page: MealsPage(
                                     showArrowBack: widget.showArrowBack,
                                     index: index,
+                                    tabIndex: 2,
                                   ),
                                   transitionType: TransitionType.slide,
                                 ),
@@ -113,7 +116,7 @@ class _BlocListDinnerState extends State<BlocListDinner>
                                 BlocProvider.of<AddToFavMealCubit>(context)
                                     .emitAddToFavMeal(mealsId);
                                 _controllers[index]!.forward();
-                              }else{
+                              } else {
                                 BlocProvider.of<AddToFavMealCubit>(context)
                                     .emitDeleteFavMeal(mealsId);
                                 _controllers[index]!.reverse();
@@ -163,8 +166,10 @@ class _BlocListDinnerState extends State<BlocListDinner>
                                   width: MediaQuery.sizeOf(context).width * .02,
                                 ),
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width * .002,
-                                  height: MediaQuery.sizeOf(context).height * .03,
+                                  width:
+                                      MediaQuery.sizeOf(context).width * .002,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * .03,
                                   color: Colors.grey,
                                 ),
                                 SizedBox(
@@ -191,8 +196,10 @@ class _BlocListDinnerState extends State<BlocListDinner>
                                   width: MediaQuery.sizeOf(context).width * .02,
                                 ),
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width * .002,
-                                  height: MediaQuery.sizeOf(context).height * .03,
+                                  width:
+                                      MediaQuery.sizeOf(context).width * .002,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * .03,
                                   color: Colors.grey,
                                 ),
                                 SizedBox(

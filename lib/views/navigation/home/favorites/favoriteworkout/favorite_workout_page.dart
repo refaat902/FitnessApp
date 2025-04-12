@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/views/navigation/exercise/data/models/exercise_model.dart';
+import 'package:flutter_application_1/views/category/data/model/exe_response_model.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoriteworkout/data/cubit/fav_exercise_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +11,7 @@ class FavoriteWorkoutPage extends StatefulWidget {
 }
 
 class _FavoriteWorkoutPageState extends State<FavoriteWorkoutPage> {
-  List<ExerciseModel> favExercise = [];
+  List<ExeResponseModel> favExercise = [];
   @override
   void initState() {
     // TODO: implement initState

@@ -1,127 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/views/navigation/exercise/data/fullExerciseCubit/full_exercise_cubit.dart';
-import 'package:flutter_application_1/views/navigation/exercise/data/models/exercise_model.dart';
+import 'package:flutter_application_1/core/di/injection.dart';
+import 'package:flutter_application_1/views/category/categorystrength/data/cubit/strength_cubit.dart';
+import 'package:flutter_application_1/views/navigation/exercise/strength/strength_page.dart';
+import 'package:flutter_application_1/views/navigation/meals/dinner/dinner_page.dart';
+import 'package:flutter_application_1/views/navigation/meals/lunch/lunch_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ExercisePage extends StatefulWidget {
+class ExercisePage extends StatelessWidget {
   final bool showArrowBack;
   final int? index;
-  ExercisePage({super.key, required this.showArrowBack, this.index});
+  final int? tabIndex;
+  const ExercisePage(
+      {super.key, required this.showArrowBack, this.index, this.tabIndex});
 
-  @override
-  State<ExercisePage> createState() => _ExercisePageState();
-}
-
-class _ExercisePageState extends State<ExercisePage> {
-  List<ExerciseModel> exercise = [];
-  List strengthCategory = [];
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    BlocProvider.of<FullExerciseCubit>(context).emitGetAllExercise();
-  }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         automaticallyImplyLeading: false,
-//         title: const Text("Full Exercise"),
-//       ),
-//       body: BlocBuilder<FullExerciseCubit, FullExerciseState>(
-//         builder: (context, state) {
-//           if (state is FullExerciseSuccessState) {
-//             exercise = state.allExerciseList;
-//             return ListView.builder(
-//               itemCount: exercise.length,
-//               itemBuilder: (context, index) {
-//                 if (exercise[index].category == 'Strength') {
-//                   return Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: Container(
-//                       width: double.infinity,
-//                       height: 60,
-//                       color: Colors.amber,
-//                       child: Text(exercise[index].category.toString()),
-//                     ),
-//                   );
-//                 }else if(exercise[index].category == 'shoulder '){
-//                                     return Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: Container(
-//                       width: double.infinity,
-//                       height: 60,
-//                       color: Colors.red,
-//                       child: Text(exercise[index].category.toString()),
-//                     ),
-//                   );
-
-//                 }
-//                 // return ListTile(
-//                 //   title: Text(exercise[index].category.toString()),
-//                 // );
-//               },
-//             );
-//           } else {
-//             return const CircularProgressIndicator();
-//           }
-//         },
-//       ),
-//     );
-//   }
-// }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text("Full Exercise"),
-      ),
-      body: BlocBuilder<FullExerciseCubit, FullExerciseState>(
-        builder: (context, state) {
-          if (state is FullExerciseSuccessState) {
-            exercise = state.allExerciseList;
-
-            // ✅ Extract unique categories
-            final Set<String> uniqueCategories = {};
-            final List<String> displayCategories = [];
-
-            for (var ex in exercise) {
-              if (!uniqueCategories.contains(ex.category)) {
-                uniqueCategories.add(ex.category.toString());
-                displayCategories.add(ex.category.toString());
-              }
-            }
-
-            return ListView.builder(
-              itemCount: displayCategories.length,
-              itemBuilder: (context, index) {
-                final category = displayCategories[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 60,
-                    color: category.trim().toLowerCase() == 'strength'
-                        ? Colors.amber
-                        : category.trim().toLowerCase() == 'shoulder'
-                            ? Colors.red
-                            : Colors.grey[300],
-                    child: Center(
-                      child: Text(
-                        category,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                    ),
+    return DefaultTabController(
+      length: 3,
+      initialIndex: tabIndex ?? 0,
+      child: Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                leading: showArrowBack
+                    ? IconButton(
+                        icon: const Icon(Icons.arrow_back_ios),
+                        onPressed: () => Navigator.pop(context),
+                      )
+                    : null,
+                title: const Text("Exercises"),
+                floating: true,
+                bottom: TabBar(
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicatorPadding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.sizeOf(context).width * .05,
                   ),
-                );
-              },
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+                  labelStyle: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(color: Colors.white),
+                  indicator: const BoxDecoration(
+                    color: Color(0xff289004),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  dividerHeight: 0,
+                  overlayColor: WidgetStateColor.transparent,
+                  tabs: const [
+                    Tab(text: "Strength"),
+                    Tab(text: "Cardio"),
+                    Tab(text: "BodyWeight"),
+                  ],
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(
+            children: [
+              BlocProvider(
+                create: (context) => getIt<StrengthCubit>(),
+                child: StrengthPage(
+                  index: index,
+                  showArrowBack: false,
+                ),
+              ),
+              LunchPage(showArrowBack: false,index: index,),
+              DinnerPage(
+                showArrowBack: false,
+                index: index,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

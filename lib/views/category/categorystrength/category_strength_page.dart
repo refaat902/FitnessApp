@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
-import 'package:flutter_application_1/views/category/categorylunch/widgets/bloc_list_lunch.dart';
 import 'package:flutter_application_1/views/category/categorystrength/data/cubit/strength_cubit.dart';
 import 'package:flutter_application_1/views/category/categorystrength/widget/bloc_list_strength.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoriteworkout/data/cubit/add_tofav_exe_cubit.dart';

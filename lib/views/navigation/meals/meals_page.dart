@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/views/category/categorybreakfast/data/cubit/meals_cubit.dart';
+import 'package:flutter_application_1/views/category/categorydinner/data/cubit/dinner_cubit.dart';
+import 'package:flutter_application_1/views/category/categorylunch/data/cubit/lunch_cubit.dart';
 import 'package:flutter_application_1/views/navigation/meals/breakfast/break_fast_page.dart';
 import 'package:flutter_application_1/views/navigation/meals/dinner/dinner_page.dart';
 import 'package:flutter_application_1/views/navigation/meals/lunch/lunch_page.dart';
@@ -9,12 +11,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MealsPage extends StatelessWidget {
   final bool showArrowBack;
   final int? index;
-  const MealsPage({super.key, required this.showArrowBack, this.index});
+  final int? tabIndex;
+  const MealsPage(
+      {super.key, required this.showArrowBack, this.index, this.tabIndex});
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
+      initialIndex: tabIndex ?? 0,
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -57,13 +62,22 @@ class MealsPage extends StatelessWidget {
             children: [
               BlocProvider(
                 create: (context) => getIt<MealsCubit>(),
-                child:  BreakFastPage(
+                child: BreakFastPage(
                   index: index,
                   showArrowBack: false,
                 ),
               ),
-              const LunchPage(),
-              const DinnerPage(),
+              BlocProvider(
+                create: (context) => getIt<LunchCubit>(),
+                child:  LunchPage(showArrowBack: false,index: index,),
+              ),
+              BlocProvider(
+                create: (context) => getIt<DinnerCubit>(),
+                child: DinnerPage(
+                  showArrowBack: false,
+                  index: index,
+                ),
+              ),
             ],
           ),
         ),

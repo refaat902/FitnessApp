@@ -5,7 +5,6 @@ import 'package:flutter_application_1/views/Signup/data/models/signup_request_mo
 import 'package:flutter_application_1/views/Signup/data/models/signup_response_model.dart';
 import 'package:flutter_application_1/views/category/data/model/exe_response_model.dart';
 import 'package:flutter_application_1/views/category/data/model/meals_response_model.dart';
-import 'package:flutter_application_1/views/navigation/exercise/data/models/exercise_model.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/data/model/meal_model.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -16,12 +15,12 @@ part 'web_services.g.dart';
 abstract class WebServices {
   factory WebServices(Dio dio, {String baseUrl}) = _WebServices;
 
-  @GET('api/Exercise')
-  Future<List<ExerciseModel>> getAllExercise();
+  // @GET('api/Exercise')
+  // Future<List<ExerciseModel>> getAllExercise();
 
 
   @GET('api/Favorites/exercises')
-  Future<List<ExerciseModel>> getFavoritesExercise(@Header('Authorization') String? token);
+  Future<List<ExeResponseModel>> getFavoritesExercise(@Header('Authorization') String? token);
 
   @GET('api/Favorites/meals')
   Future<List<MealModel>> getFavoritesMeal(@Header('Authorization') String? token);
@@ -37,7 +36,7 @@ abstract class WebServices {
   Future<List<MealsResponseModel>> getMeals(@Path() String mealType,@Header('Authorization') String? token);
 
   @GET('/api/Exercise/category/{category}')
-  Future<List<ExeResponseModel>> getExe(@Path() String exeType,@Header('Authorization') String? token);
+  Future<List<ExeResponseModel>> getExe(@Path() String category,@Header('Authorization') String? token);
 
   @POST('/api/Favorites/meals/{id}')
   Future<void> addToFavMeal(@Path() String id,@Header('Authorization') String? token);

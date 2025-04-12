@@ -20,45 +20,14 @@ class _WebServices implements WebServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<ExerciseModel>> getAllExercise() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<ExerciseModel>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'api/Exercise',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<ExerciseModel> _value;
-    try {
-      _value = _result.data!
-          .map(
-            (dynamic i) => ExerciseModel.fromJson(i as Map<String, dynamic>),
-          )
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<List<ExerciseModel>> getFavoritesExercise(String? token) async {
+  Future<List<ExeResponseModel>> getFavoritesExercise(String? token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<ExerciseModel>>(
+    final _options = _setStreamType<List<ExeResponseModel>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -69,11 +38,11 @@ class _WebServices implements WebServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<ExerciseModel> _value;
+    late List<ExeResponseModel> _value;
     try {
       _value = _result.data!
           .map(
-            (dynamic i) => ExerciseModel.fromJson(i as Map<String, dynamic>),
+            (dynamic i) => ExeResponseModel.fromJson(i as Map<String, dynamic>),
           )
           .toList();
     } on Object catch (e, s) {
@@ -210,7 +179,7 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<List<ExeResponseModel>> getExe(String exeType, String? token) async {
+  Future<List<ExeResponseModel>> getExe(String category, String? token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
@@ -221,7 +190,7 @@ class _WebServices implements WebServices {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/Exercise/category/{category}',
+            '/api/Exercise/category/${category}',
             queryParameters: queryParameters,
             data: _data,
           )

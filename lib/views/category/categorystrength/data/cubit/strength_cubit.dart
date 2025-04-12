@@ -6,25 +6,18 @@ import 'package:meta/meta.dart';
 part 'strength_state.dart';
 
 class StrengthCubit extends Cubit<StrengthState> {
-          final CategoryRepo categoryRepo;
+  final CategoryRepo categoryRepo;
   StrengthCubit(this.categoryRepo) : super(StrengthInitial());
 
-
-
-
-
-
-
-
-  void emitExeByType(String mealType) {
+  void emitExeByType(String categoryType) {
     try {
-      categoryRepo.getExeByType(mealType).then((exeByType) {
+      categoryRepo.getExeByType(categoryType).then((exeByType) {
+
         emit(ExeByTypeStrengthSuccessState(exeByTypeList: exeByType));
+      }).catchError((error) {    
       });
     } catch (e) {
-      print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-      print(e);
-      print("zzzzzzzzzzzzzzzzzzzzzzzz");
+      print("Exception in emitExeByType: $e");
     }
   }
 }

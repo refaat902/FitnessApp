@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/category/categorystrength/data/cubit/strength_cubit.dart';
 import 'package:flutter_application_1/views/category/data/model/exe_response_model.dart';
@@ -50,8 +51,9 @@ class _BlocListStrengthState extends State<BlocListStrength>
             builder: (context, favState) {
               Set<String> favoriteIds = {};
               if (favState is FavExerciseSuccessState) {
-                favoriteIds =
-                    favState.favExerciseList.map((exe) => exe.id.toString()).toSet();
+                favoriteIds = favState.favExerciseList
+                    .map((exe) => exe.id.toString())
+                    .toSet();
               }
 
               return ListView.builder(
@@ -83,9 +85,12 @@ class _BlocListStrengthState extends State<BlocListStrength>
                               Navigator.push(
                                 context,
                                 CustomPageRoute(
-                                  page: ExercisePage(
-                                    showArrowBack: widget.showArrowBack,
-                                    index: index,
+                                  page: BlocProvider(
+                                    create: (context) => getIt<StrengthCubit>(),
+                                    child: ExercisePage(
+                                      showArrowBack: widget.showArrowBack,
+                                      index: index,
+                                    ),
                                   ),
                                   transitionType: TransitionType.slide,
                                 ),
@@ -113,7 +118,7 @@ class _BlocListStrengthState extends State<BlocListStrength>
                                 BlocProvider.of<AddTofavExeCubit>(context)
                                     .emitAddToFavExe(exeId);
                                 _controllers[index]!.forward();
-                              }else{
+                              } else {
                                 BlocProvider.of<AddTofavExeCubit>(context)
                                     .emitDeleteFavExe(exeId);
                                 _controllers[index]!.reverse();
@@ -139,11 +144,12 @@ class _BlocListStrengthState extends State<BlocListStrength>
                           left: MediaQuery.sizeOf(context).width * .02,
                         ),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
                                 Image.asset(
-                                  'assets/images/meat.png',
+                                  'assets/images/level.png',
                                   width: MediaQuery.sizeOf(context).width * .05,
                                 ),
                                 SizedBox(
@@ -159,19 +165,15 @@ class _BlocListStrengthState extends State<BlocListStrength>
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                                SizedBox(
-                                  width: MediaQuery.sizeOf(context).width * .02,
-                                ),
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * .002,
-                                  height: MediaQuery.sizeOf(context).height * .03,
-                                  color: Colors.grey,
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.sizeOf(context).width * .02,
-                                ),
+                              ],
+                            ),
+                                                        SizedBox(
+                              height: MediaQuery.sizeOf(context).height * .02,
+                            ),
+                            Row(
+                              children: [
                                 Image.asset(
-                                  'assets/images/carb.png',
+                                  'assets/images/kettlebell.png',
                                   width: MediaQuery.sizeOf(context).width * .05,
                                 ),
                                 SizedBox(
@@ -187,19 +189,15 @@ class _BlocListStrengthState extends State<BlocListStrength>
                                         fontWeight: FontWeight.bold,
                                       ),
                                 ),
-                                SizedBox(
-                                  width: MediaQuery.sizeOf(context).width * .02,
-                                ),
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * .002,
-                                  height: MediaQuery.sizeOf(context).height * .03,
-                                  color: Colors.grey,
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.sizeOf(context).width * .02,
-                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: MediaQuery.sizeOf(context).height * .02,
+                            ),
+                            Row(
+                              children: [
                                 Image.asset(
-                                  'assets/images/lipid.png',
+                                  'assets/images/folder.png',
                                   width: MediaQuery.sizeOf(context).width * .05,
                                 ),
                                 SizedBox(

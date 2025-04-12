@@ -5,7 +5,7 @@ sealed class FavExerciseState {}
 
 final class FavExerciseInitial extends FavExerciseState {}
 class FavExerciseSuccessState extends FavExerciseState {
-  final List<ExerciseModel> favExerciseList;
+  final List<ExeResponseModel> favExerciseList;
 
   FavExerciseSuccessState({required this.favExerciseList});
 

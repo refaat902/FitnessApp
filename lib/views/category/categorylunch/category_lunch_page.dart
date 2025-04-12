@@ -44,6 +44,7 @@ class _CategoryLunchPageState extends State<CategoryLunchPage> {
   ],
   child: const BlocListLunch(
     showArrowBack: true,
+    tabIndex: 1,
   ),
 )
     );
