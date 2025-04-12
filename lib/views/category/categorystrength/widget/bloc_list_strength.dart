@@ -197,7 +197,7 @@ class _BlocListStrengthState extends State<BlocListStrength>
                             Row(
                               children: [
                                 Image.asset(
-                                  'assets/images/folder.png',
+                                  'assets/images/muscle.png',
                                   width: MediaQuery.sizeOf(context).width * .05,
                                 ),
                                 SizedBox(
