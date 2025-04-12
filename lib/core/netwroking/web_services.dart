@@ -23,7 +23,7 @@ abstract class WebServices {
   Future<List<ExeResponseModel>> getFavoritesExercise(@Header('Authorization') String? token);
 
   @GET('api/Favorites/meals')
-  Future<List<MealModel>> getFavoritesMeal(@Header('Authorization') String? token);
+  Future<List<MealsResponseModel>> getFavoritesMeal(@Header('Authorization') String? token);
 
   @POST('/api/Auth/register')
   Future<SignUpResponsetModel> createNewUser(@Body() SignUpRequestModel signUpRequestModel);

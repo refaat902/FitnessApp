@@ -53,14 +53,14 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<List<MealModel>> getFavoritesMeal(String? token) async {
+  Future<List<MealsResponseModel>> getFavoritesMeal(String? token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<MealModel>>(
+    final _options = _setStreamType<List<MealsResponseModel>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -71,10 +71,13 @@ class _WebServices implements WebServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<MealModel> _value;
+    late List<MealsResponseModel> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => MealModel.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) =>
+                MealsResponseModel.fromJson(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

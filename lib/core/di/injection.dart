@@ -4,6 +4,8 @@ import 'package:flutter_application_1/views/Login/data/cubit/login_cubit.dart';
 import 'package:flutter_application_1/views/Login/data/repository/login_repo.dart';
 import 'package:flutter_application_1/views/Signup/data/cubit/sign_up_cubit.dart';
 import 'package:flutter_application_1/views/Signup/data/repository/signup_repo.dart';
+import 'package:flutter_application_1/views/category/categorybodyweight/data/cubit/bodyweight_cubit.dart';
+import 'package:flutter_application_1/views/category/categorycardio/data/cubit/cardio_cubit.dart';
 import 'package:flutter_application_1/views/category/categorydinner/data/cubit/dinner_cubit.dart';
 import 'package:flutter_application_1/views/category/categorylunch/data/cubit/lunch_cubit.dart';
 import 'package:flutter_application_1/views/category/categorybreakfast/data/cubit/meals_cubit.dart';
@@ -39,6 +41,8 @@ void setup() {
   getIt.registerFactory<LunchCubit>(()=> LunchCubit(getIt()));
   getIt.registerFactory<DinnerCubit>(()=> DinnerCubit(getIt()));
   getIt.registerFactory<StrengthCubit>(()=> StrengthCubit(getIt()));
+  getIt.registerFactory<CardioCubit>(()=> CardioCubit(getIt()));
+   getIt.registerFactory<BodyweightCubit>(()=> BodyweightCubit(getIt()));
   getIt.registerFactory<CategoryRepo>(()=> CategoryRepo(getIt()));
 
   getIt.registerFactory<AddToFavMealCubit>(()=> AddToFavMealCubit(getIt()));

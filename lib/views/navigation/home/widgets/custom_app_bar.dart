@@ -17,8 +17,8 @@ class CustomAppBar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Fitness',
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white, fontSize: 40),
+                            'Your body. Our tech. Maximum results',
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontSize: 22),
                           ),
                         ],
                       ),

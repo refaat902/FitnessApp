@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_application_1/views/category/data/model/meals_response_model.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/data/model/meal_model.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/data/repository/get_fav_meals_repo.dart';
 import 'package:meta/meta.dart';

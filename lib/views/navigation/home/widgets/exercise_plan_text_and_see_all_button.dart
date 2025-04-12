@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/category/categorybodyweight/category_body_weight_page.dart';
+import 'package:flutter_application_1/views/category/categorybodyweight/data/cubit/bodyweight_cubit.dart';
+import 'package:flutter_application_1/views/category/categorycardio/category_cardio_page.dart';
+import 'package:flutter_application_1/views/category/categorycardio/data/cubit/cardio_cubit.dart';
 import 'package:flutter_application_1/views/category/categorystrength/category_strength_page.dart';
 import 'package:flutter_application_1/views/category/categorystrength/data/cubit/strength_cubit.dart';
 import 'package:flutter_application_1/views/navigation/home/data/model/exercise_model.dart';
@@ -65,29 +69,29 @@ class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
                               ),
                               transitionType: TransitionType.slide));
                     } 
-                    // else if (exercises[index].name == 'Lunch') {
-                    //   Navigator.push(
-                    //       context,
-                    //       CustomPageRoute(
-                    //           page: BlocProvider(
-                    //             create: (context) => getIt<LunchCubit>(),
-                    //             child: CategoryLunchPage(
-                    //               name: exercises[index].name,
-                    //             ),
-                    //           ),
-                    //           transitionType: TransitionType.slide));
-                    // } 
+                    else if (exercises[index].name == 'Cardio') {
+                      Navigator.push(
+                          context,
+                          CustomPageRoute(
+                              page: BlocProvider(
+                                create: (context) => getIt<CardioCubit>(),
+                                child: CategoryCardioPage(
+                                  name: exercises[index].name,
+                                ),
+                              ),
+                              transitionType: TransitionType.slide));
+                    } 
                     else {
-                      // Navigator.push(
-                      //     context,
-                      //     CustomPageRoute(
-                      //         page: BlocProvider(
-                      //           create: (context) => getIt<DinnerCubit>(),
-                      //           child: CategoryDinnerPage(
-                      //             name: exercises[index].name,
-                      //           ),
-                      //         ),
-                      //         transitionType: TransitionType.slide));
+                      Navigator.push(
+                          context,
+                          CustomPageRoute(
+                              page: BlocProvider(
+                                create: (context) => getIt<BodyweightCubit>(),
+                                child: CategoryBodyWeightPage(
+                                  name: exercises[index].name,
+                                ),
+                              ),
+                              transitionType: TransitionType.slide));
                     }
                   },
                   child: Padding(

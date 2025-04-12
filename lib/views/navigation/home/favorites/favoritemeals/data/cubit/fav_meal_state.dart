@@ -5,7 +5,7 @@ sealed class FavMealState {}
 
 final class FavMealInitial extends FavMealState {}
 class FavMealSuccessState extends FavMealState {
-  final List<MealModel> favMealList;
+  final List<MealsResponseModel> favMealList;
 
   FavMealSuccessState({required this.favMealList});
 
