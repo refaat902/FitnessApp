@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/di/injection.dart';
+import 'package:flutter_application_1/views/navigation/exercise/data/fullExerciseCubit/full_exercise_cubit.dart';
 import 'package:flutter_application_1/views/navigation/exercise/exercise_page.dart';
 import 'package:flutter_application_1/views/navigation/home/home_page.dart';
 import 'package:flutter_application_1/views/navigation/meals/meals_page.dart';
 import 'package:flutter_application_1/views/navigation/profile/profile_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -17,9 +20,12 @@ class _NavigationPageState extends State<NavigationPage> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const HomePage(),
-    const MealsPage(),
-    const ExercisePage(),
+     HomePage(),
+    const MealsPage(showArrowBack: false,),
+    BlocProvider(
+      create: (context) => getIt<FullExerciseCubit>(),
+      child: ExercisePage(),
+    ),
     const ProfilePage(),
   ];
 
@@ -33,9 +39,9 @@ class _NavigationPageState extends State<NavigationPage> {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
-              spreadRadius: 1, 
-              blurRadius: 8, 
-              offset: const Offset(0, -2), 
+              spreadRadius: 1,
+              blurRadius: 8,
+              offset: const Offset(0, -2),
             ),
           ],
         ),

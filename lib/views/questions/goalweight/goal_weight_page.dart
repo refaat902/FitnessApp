@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/transitions/transitions_class.dart';
+import 'package:flutter_application_1/core/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/age/age_page.dart';
 import 'package:flutter_application_1/views/questions/height/height_page.dart';
 import 'package:google_fonts/google_fonts.dart';

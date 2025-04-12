@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controllers/dio_helper.dart';
-import 'package:flutter_application_1/views/navigation/home/exercisecubit/exercise_cubit.dart';
-import 'package:flutter_application_1/views/navigation/home/mealscubit/meals_cubit.dart';
+import 'package:flutter_application_1/core/di/injection.dart';
+import 'package:flutter_application_1/core/helpers/shared_pref_helper.dart';
+import 'package:flutter_application_1/views/navigation/navigation_page.dart';
 import 'package:flutter_application_1/views/pageview/pageview.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
+  setup();
   WidgetsFlutterBinding.ensureInitialized();
   GoogleFonts.config.allowRuntimeFetching = false;
-  DioHelper.init();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  Future<bool> _checkUserLoggedIn() async {
+    return await SharedPrefService.isUserLoggedIn();
+  }
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => MealsCubit()),
-        BlocProvider(create: (context) => ExerciseCubit()),
-      ],
-      child: MaterialApp(
+    return MaterialApp(
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
             elevation: 0,
@@ -54,6 +50,11 @@ class MyApp extends StatelessWidget {
               color: Colors.black,
               fontSize: 30,
               fontWeight: FontWeight.normal,
+            ),
+            titleMedium: GoogleFonts.bebasNeue(
+              color: Colors.black,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
             ),
             labelLarge: GoogleFonts.montserrat(
               color: const Color(0xff3A4750),
@@ -103,7 +104,19 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: const PageViewWithSlider(),
+             home: FutureBuilder<bool>(
+        future: _checkUserLoggedIn(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.data == true) {
+            return const NavigationPage(); // ← Go here if logged in
+          } else {
+            return const PageViewWithSlider(); // ← Onboarding/Login screen
+          }
+        },
       ),
     );
   }

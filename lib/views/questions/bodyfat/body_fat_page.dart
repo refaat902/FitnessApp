@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/transitions/transitions_class.dart';
+import 'package:flutter_application_1/core/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/questions/age/age_page.dart';
 import 'package:flutter_application_1/views/questions/goalweight/goal_weight_page.dart';
 import 'package:flutter_application_1/views/questions/musclemass/muscle_mass_page.dart';

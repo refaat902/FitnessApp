@@ -1,9 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/transitions/transitions_class.dart';
+import 'package:flutter_application_1/core/di/injection.dart';
+import 'package:flutter_application_1/core/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/Login/data/cubit/login_cubit.dart';
 import 'package:flutter_application_1/views/Login/login_page.dart';
 import 'package:flutter_application_1/views/questions/age/age_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageViewWithSlider extends StatefulWidget {
   const PageViewWithSlider({super.key});
@@ -127,7 +130,10 @@ class _PageViewWithSliderState extends State<PageViewWithSlider> {
                         Navigator.push(
                             context,
                             CustomPageRoute(
-                                page: const LoginPage(),
+                                page: BlocProvider(
+                                  create: (context) => getIt<LoginCubit>(),
+                                  child: const LoginPage(),
+                                ),
                                 transitionType: TransitionType.fade));
                       },
                       child: const Text(

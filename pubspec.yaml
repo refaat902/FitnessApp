@@ -43,7 +43,17 @@ dependencies:
   flutter_bloc: ^8.1.3
   bloc: ^8.1.2
   dio: ^5.4.0
-  shimmer: ^3.0.0 
+  shimmer: ^3.0.0
+  # freezed: ^3.0.6
+  # freezed_annotation: ^3.0.0
+  json_serializable: ^6.9.4
+  json_annotation: ^4.9.0
+  retrofit: ^4.4.2
+  retrofit_generator: ^9.1.9
+  get_it: ^8.0.3
+  build_runner: ^2.4.15
+  shared_preferences: ^2.5.3
+  lottie: ^3.3.1
   
 
 dev_dependencies:
@@ -82,7 +92,16 @@ flutter:
     - assets/images/person.png
     - assets/images/person2.png
     - assets/images/dumbbells.png
-
+    - assets/images/exeCat1.jpg
+    - assets/images/exeCat2.jpg
+    - assets/images/exeCat3.jpg
+    - assets/images/breakfastCat.jpg
+    - assets/images/lunchCat.jpg
+    - assets/images/dinnerCat.jpg
+    - assets/images/meat.png
+    - assets/images/carb.png
+    - assets/images/lipid.png
+    - assets/animations/fav.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

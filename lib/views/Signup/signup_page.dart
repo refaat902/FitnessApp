@@ -1,13 +1,36 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_application_1/views/Signup/data/cubit/sign_up_cubit.dart';
+import 'package:flutter_application_1/views/Signup/widgets/create_account_button.dart';
+import 'package:flutter_application_1/views/Signup/widgets/enter_credentials_text.dart';
+import 'package:flutter_application_1/views/Signup/widgets/text_form_fields_signup.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+@override
+Widget build(BuildContext context) {
+  return BlocListener<SignUpCubit, SignUpState>(
+    listener: (context, state) {
+      if (state is CreateNewUSerSuccessState) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Account created successfully!"),
+            backgroundColor: Colors.green,
+          ),
+        );
+        Future.delayed(const Duration(seconds: 1), () {
+          // ignore: use_build_context_synchronously
+          Navigator.pop(context); 
+        });
+      }
+    },
+    child: Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -18,11 +41,12 @@ class SignupPage extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            expandedHeight: MediaQuery.sizeOf(context).height*.2,
+            expandedHeight: MediaQuery.sizeOf(context).height * .2,
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("Create Account", style: Theme.of(context).textTheme.titleLarge),
+              title: Text("Create Account",
+                  style: Theme.of(context).textTheme.titleLarge),
               background: Container(color: const Color(0xffFCFCFC)),
             ),
           ),
@@ -31,163 +55,18 @@ class SignupPage extends StatelessWidget {
               [
                 Padding(
                   padding: EdgeInsets.only(
-                    bottom: MediaQuery.sizeOf(context).height * .03,
-                    top: MediaQuery.sizeOf(context).height * .03,
-                    left: MediaQuery.sizeOf(context).width * .03,
-                    right: MediaQuery.sizeOf(context).width * .03
-                  ),
+                      bottom: MediaQuery.sizeOf(context).height * .03,
+                      top: MediaQuery.sizeOf(context).height * .03,
+                      left: MediaQuery.sizeOf(context).width * .03,
+                      right: MediaQuery.sizeOf(context).width * .03),
                   child: Column(
                     children: [
-                      // Row(
-                      //   children: [
-                      //     Text(
-                      //       "Create Account",
-                      //       style: Theme.of(context).textTheme.titleLarge,
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: AutoSizeText(
-                              "Please enter your credentials to proceed",
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ),
-                        ],
-                      ),
+                      const EnterCredentialsText(),
                       SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Text(
-                            "Full Name",
-                            style: Theme.of(context).textTheme.labelLarge,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      TextFormField(
-                        cursorColor: const Color(0xff289004),
-                        decoration: InputDecoration(
-                            hintText: "John Welles",
-                            hintStyle: Theme.of(context).textTheme.labelMedium),
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Text(
-                            "Phone",
-                            style: Theme.of(context).textTheme.labelLarge,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      TextFormField(
-                        cursorColor: const Color(0xff289004),
-                        decoration: InputDecoration(
-                            hintText: "0103651478",
-                            hintStyle: Theme.of(context).textTheme.labelMedium),
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Text(
-                            "Email address",
-                            style: Theme.of(context).textTheme.labelLarge,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      TextFormField(
-                        cursorColor: const Color(0xff289004),
-                        decoration: InputDecoration(
-                            hintText: "johnwelles@gmail.com",
-                            hintStyle: Theme.of(context).textTheme.labelMedium),
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Text(
-                            "Password",
-                            style: Theme.of(context).textTheme.labelLarge,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      TextFormField(
-                        cursorColor: const Color(0xff289004),
-                        decoration: InputDecoration(
-                            hintText: "*****",
-                            hintStyle: Theme.of(context).textTheme.labelMedium),
-                      ),
+                      const TextFormFieldsSignup(),
                       SizedBox(height: MediaQuery.sizeOf(context).height * .03),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: ElevatedButton(
-                                  onPressed: () {},
-                                  child: const Text("Create Account"))),
-                        ],
-                      ),
+                      const CreateAccountButton(),
                       SizedBox(height: MediaQuery.sizeOf(context).height * .02),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Or Register with",
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: ElevatedButton(
-                                  style: const ButtonStyle(
-                                      backgroundColor: WidgetStatePropertyAll(Color(0xffF5F5F5))),
-                                  onPressed: () {},
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: MediaQuery.sizeOf(context).width * .05),
-                                    child: Row(
-                                      children: [
-                                        Image.asset("assets/images/google.png"),
-                                        SizedBox(width: MediaQuery.sizeOf(context).width * .2),
-                                        Text("Connect with Google",
-                                            style: GoogleFonts.montserrat(
-                                                color: const Color(0xff303841),
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                  ))),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: ElevatedButton(
-                                  style: const ButtonStyle(
-                                      backgroundColor: WidgetStatePropertyAll(Color(0xff4267B2))),
-                                  onPressed: () {},
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: MediaQuery.sizeOf(context).width * .05),
-                                    child: Row(
-                                      children: [
-                                        Image.asset("assets/images/facebook.png"),
-                                        SizedBox(width: MediaQuery.sizeOf(context).width * .2),
-                                        Text("Connect with Facebook",
-                                            style: GoogleFonts.montserrat(
-                                                color: Colors.white, fontSize: 14)),
-                                      ],
-                                    ),
-                                  ))),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .03),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -210,7 +89,8 @@ class SignupPage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
 }
 
+}
