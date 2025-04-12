@@ -4,7 +4,9 @@ import 'package:flutter_application_1/views/navigation/exercise/data/models/exer
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExercisePage extends StatefulWidget {
-  ExercisePage({super.key});
+  final bool showArrowBack;
+  final int? index;
+  ExercisePage({super.key, required this.showArrowBack, this.index});
 
   @override
   State<ExercisePage> createState() => _ExercisePageState();

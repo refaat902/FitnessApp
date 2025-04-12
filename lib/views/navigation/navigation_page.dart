@@ -24,7 +24,7 @@ class _NavigationPageState extends State<NavigationPage> {
     const MealsPage(showArrowBack: false,),
     BlocProvider(
       create: (context) => getIt<FullExerciseCubit>(),
-      child: ExercisePage(),
+      child: ExercisePage(showArrowBack: false,),
     ),
     const ProfilePage(),
   ];

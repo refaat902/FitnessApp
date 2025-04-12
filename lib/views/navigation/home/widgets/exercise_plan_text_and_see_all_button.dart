@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/di/injection.dart';
+import 'package:flutter_application_1/core/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/category/categorystrength/category_strength_page.dart';
+import 'package:flutter_application_1/views/category/categorystrength/data/cubit/strength_cubit.dart';
 import 'package:flutter_application_1/views/navigation/home/data/model/exercise_model.dart';
-import 'package:flutter_application_1/views/navigation/home/data/model/meal_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
@@ -11,7 +15,8 @@ class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width * .03),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * .03),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -40,7 +45,7 @@ class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
 
           // ListView with meal items
           SizedBox(
-            height: MediaQuery.sizeOf(context).height*.3,
+            height: MediaQuery.sizeOf(context).height * .3,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: exercises.length,
@@ -48,6 +53,42 @@ class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
                 final meal = exercises[index];
                 return GestureDetector(
                   onTap: () {
+                    if (exercises[index].name == 'Strength') {
+                      Navigator.push(
+                          context,
+                          CustomPageRoute(
+                              page: BlocProvider(
+                                create: (context) => getIt<StrengthCubit>(),
+                                child: CategoryStrengthPage(
+                                  name: exercises[index].name,
+                                ),
+                              ),
+                              transitionType: TransitionType.slide));
+                    } 
+                    // else if (exercises[index].name == 'Lunch') {
+                    //   Navigator.push(
+                    //       context,
+                    //       CustomPageRoute(
+                    //           page: BlocProvider(
+                    //             create: (context) => getIt<LunchCubit>(),
+                    //             child: CategoryLunchPage(
+                    //               name: exercises[index].name,
+                    //             ),
+                    //           ),
+                    //           transitionType: TransitionType.slide));
+                    // } 
+                    else {
+                      // Navigator.push(
+                      //     context,
+                      //     CustomPageRoute(
+                      //         page: BlocProvider(
+                      //           create: (context) => getIt<DinnerCubit>(),
+                      //           child: CategoryDinnerPage(
+                      //             name: exercises[index].name,
+                      //           ),
+                      //         ),
+                      //         transitionType: TransitionType.slide));
+                    }
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 10.0),
@@ -56,7 +97,7 @@ class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
                       children: [
                         Container(
                           width: MediaQuery.sizeOf(context).width,
-                          height: MediaQuery.sizeOf(context).height*.25,
+                          height: MediaQuery.sizeOf(context).height * .25,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(

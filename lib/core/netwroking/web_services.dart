@@ -3,6 +3,7 @@ import 'package:flutter_application_1/views/Login/data/model/login_request_model
 import 'package:flutter_application_1/views/Login/data/model/login_response_model.dart';
 import 'package:flutter_application_1/views/Signup/data/models/signup_request_model.dart';
 import 'package:flutter_application_1/views/Signup/data/models/signup_response_model.dart';
+import 'package:flutter_application_1/views/category/data/model/exe_response_model.dart';
 import 'package:flutter_application_1/views/category/data/model/meals_response_model.dart';
 import 'package:flutter_application_1/views/navigation/exercise/data/models/exercise_model.dart';
 import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/data/model/meal_model.dart';
@@ -35,9 +36,18 @@ abstract class WebServices {
   @GET('/api/Meal/byMealType/{mealType}')
   Future<List<MealsResponseModel>> getMeals(@Path() String mealType,@Header('Authorization') String? token);
 
+  @GET('/api/Exercise/category/{category}')
+  Future<List<ExeResponseModel>> getExe(@Path() String exeType,@Header('Authorization') String? token);
+
   @POST('/api/Favorites/meals/{id}')
   Future<void> addToFavMeal(@Path() String id,@Header('Authorization') String? token);
 
   @DELETE('/api/Favorites/meals/{id}')
   Future<void> deleteFavMeal(@Path() String id,@Header('Authorization') String? token);
+
+  @POST('/api/Favorites/exercises/{id}')
+  Future<void> addToFavExe(@Path() String id,@Header('Authorization') String? token);
+
+  @DELETE('/api/Favorites/exercises/{id}')
+  Future<void> deleteFavExe(@Path() String id,@Header('Authorization') String? token);
 }
