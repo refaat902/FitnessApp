@@ -62,7 +62,7 @@ class BlocListBreakFastPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                               10),
                           child: Image.network(
-                            state.mealByTypeList[inx].imageUrl.toString(),
+                            state.mealByTypeList[inx].imageUrl ?? 'assets/images/loading.png',
                             width: MediaQuery.sizeOf(context).width *
                                 0.2,
                             fit: BoxFit

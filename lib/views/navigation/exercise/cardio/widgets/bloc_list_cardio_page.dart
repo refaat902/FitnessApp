@@ -63,7 +63,7 @@ class BlocListCardioPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.network(
-                            state.exeByTypeList[inx].imageUrl.toString(),
+                            state.exeByTypeList[inx].imageUrl ?? 'assets/images/loading.png',
                             width: MediaQuery.sizeOf(context).width * 0.2,
                             fit: BoxFit.cover,
                           ),

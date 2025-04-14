@@ -59,7 +59,7 @@ class _FavoriteWorkoutPageState extends State<FavoriteWorkoutPage> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.network(
-                              state.favExerciseList[index].imageUrl.toString(),
+                              state.favExerciseList[index].imageUrl ?? 'assets/images/loading.png',
                               width: MediaQuery.sizeOf(context).width * 0.2,
                               fit: BoxFit.cover,
                             ),

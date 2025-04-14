@@ -54,6 +54,7 @@ dependencies:
   build_runner: ^2.4.15
   shared_preferences: ^2.5.3
   lottie: ^3.3.1
+  webview_flutter: ^4.10.0
   
 
 dev_dependencies:
@@ -106,6 +107,7 @@ flutter:
     - assets/images/folder.png
     - assets/images/kettlebell.png
     - assets/images/muscle.png
+    - assets/images/loading.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

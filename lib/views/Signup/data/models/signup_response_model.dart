@@ -5,8 +5,6 @@ part 'signup_response_model.g.dart';
 
 
 @JsonSerializable()
-
-
 class SignUpResponsetModel {
   String? message;
 

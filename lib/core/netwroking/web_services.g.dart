@@ -53,6 +53,35 @@ class _WebServices implements WebServices {
   }
 
   @override
+  Future<ProfileModel> getProfile(String? token) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProfileModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/User/profile',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProfileModel _value;
+    try {
+      _value = ProfileModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<List<MealsResponseModel>> getFavoritesMeal(String? token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -145,6 +174,36 @@ class _WebServices implements WebServices {
   }
 
   @override
+  Future<AiMealResponsetModel> getAiMeals(
+    AiMealRequestModel requestData,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(requestData.toJson());
+    final _options = _setStreamType<AiMealResponsetModel>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'https://fitapp-497248763586.us-central1.run.app/api/predict',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AiMealResponsetModel _value;
+    try {
+      _value = AiMealResponsetModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<List<MealsResponseModel>> getMeals(
     String mealType,
     String? token,
@@ -172,6 +231,42 @@ class _WebServices implements WebServices {
           .map(
             (dynamic i) =>
                 MealsResponseModel.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<List<ExeResponseModel>> getExeByMusleGroup(
+    String group,
+    String? token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<ExeResponseModel>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Exercise/muscleGroup/${group}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<ExeResponseModel> _value;
+    try {
+      _value = _result.data!
+          .map(
+            (dynamic i) => ExeResponseModel.fromJson(i as Map<String, dynamic>),
           )
           .toList();
     } on Object catch (e, s) {
