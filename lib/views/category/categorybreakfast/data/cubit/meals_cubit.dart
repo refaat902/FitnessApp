@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application_1/views/category/data/model/meals_response_model.dart';
 import 'package:flutter_application_1/views/category/data/repository/category_repo.dart';
-import 'package:meta/meta.dart';
+
 
 part 'meals_state.dart';
 

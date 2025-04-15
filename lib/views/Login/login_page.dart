@@ -22,8 +22,12 @@ class LoginPage extends StatelessWidget {
         if (state is LoginSuccessState) {
           await SharedPrefService.setUserLoggedIn(true);
           await SharedPrefService.saveToken(state.loginData.token.toString());
-          Navigator.push(context, CustomPageRoute(page: const NavigationPage(),transitionType: TransitionType.slide));
-          
+          Navigator.push(
+              // ignore: use_build_context_synchronously
+              context,
+              CustomPageRoute(
+                  page: const NavigationPage(),
+                  transitionType: TransitionType.slide));
         }
       },
       child: Scaffold(
@@ -31,6 +35,12 @@ class LoginPage extends StatelessWidget {
           slivers: [
             SliverAppBar(
               centerTitle: true,
+              // automaticallyImplyLeading: false,
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back_ios,color: Colors.black,)),
               expandedHeight: MediaQuery.sizeOf(context).height * .2,
               floating: false,
               pinned: true,

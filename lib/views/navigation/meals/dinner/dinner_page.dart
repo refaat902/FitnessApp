@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/views/category/categorybreakfast/data/cubit/meals_cubit.dart';
 import 'package:flutter_application_1/views/category/categorydinner/data/cubit/dinner_cubit.dart';
-import 'package:flutter_application_1/views/navigation/meals/breakfast/widgets/bloc_list_break_fast_page.dart';
 import 'package:flutter_application_1/views/navigation/meals/dinner/widgets/bloc_list_dinner_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

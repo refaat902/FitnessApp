@@ -32,6 +32,7 @@ class AiExePage extends StatelessWidget {
             leading: Container(
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
+                // ignore: deprecated_member_use
                 color: Colors.white.withOpacity(0.8),
                 shape: BoxShape.circle,
               ),
@@ -66,6 +67,7 @@ class AiExePage extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
+                          // ignore: deprecated_member_use
                           Colors.black.withOpacity(0.7),
                         ],
                       ),
@@ -103,6 +105,7 @@ class AiExePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
+                          // ignore: deprecated_member_use
                           color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 1,
                           blurRadius: 8,
@@ -178,7 +181,7 @@ class AiExePage extends StatelessWidget {
                           onPressed: aiModel == null || aiModel!.isEmpty
                               ? null
                               : () {
-                                  // AI Model functionality
+                                
                                 },
                         ),
                       ),
@@ -194,6 +197,7 @@ class AiExePage extends StatelessWidget {
                       color: const Color(0xffF5F5F5),
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
+                        // ignore: deprecated_member_use
                         color: const Color(0xff289004).withOpacity(0.3),
                         width: 1,
                       ),

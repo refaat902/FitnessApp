@@ -30,8 +30,7 @@ class CustomPageRoute extends PageRouteBuilder {
                   child: child,
                 );
               case TransitionType.fade:
-              default:
-                return FadeTransition(
+              return FadeTransition(
                   opacity: animation,
                   child: child,
                 );

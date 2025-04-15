@@ -68,42 +68,26 @@ class _UserProfilePageState extends State<UserProfilePage> {
     return Scaffold(
       body: BlocConsumer<AiMealCubit, AiMealState>(
         listener: (context, state) {
-          if (state is GetAiMealsSuccessState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("Profile updated successfully!"),
-                backgroundColor: Color(0xff289004),
-              ),
-            );
-            // Navigate to result page or handle the response data
-            // You can add navigation logic here if needed
-          }
+          // if (state is GetAiMealsSuccessState) {
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     const SnackBar(
+          //       content: Text("Profile updated successfully!"),
+          //       backgroundColor: Color(0xff289004),
+          //     ),
+          //   );
+          //   // Navigate to result page or handle the response data
+          //   // You can add navigation logic here if needed
+          // }
         },
         builder: (context, state) {
           return Stack(
             children: [
               CustomScrollView(
                 slivers: [
-                  SliverAppBar(
-                    centerTitle: true,
-                    leading: IconButton(
-                      icon: const Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    expandedHeight: MediaQuery.sizeOf(context).height * .2,
-                    pinned: true,
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: Text("Set up Profile",
-                          style: Theme.of(context).textTheme.titleLarge),
-                      background: Container(color: const Color(0xffFCFCFC)),
-                    ),
-                  ),
                   SliverList(
                     delegate: SliverChildListDelegate([
                       Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width*.03,vertical: MediaQuery.sizeOf(context).height*.02),
                         child: Form(
                           key: _formKey,
                           child: Column(
@@ -415,7 +399,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   Expanded(
                                     child: ElevatedButton(
                                         onPressed: _submitForm,
-                                        child: Text("Save")),
+                                        child: const Text("Generate")),
                                   ),
                                 ],
                               ),
@@ -443,7 +427,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
     );
   }
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       // Validate all input fields
       try {
@@ -464,10 +448,16 @@ class _UserProfilePageState extends State<UserProfilePage> {
             dietary_preference: selectedDietaryValue,
           ),
         );
+        // await SharedPrefService.setUserProfile(false);
+
         Navigator.push(
           context,
           CustomPageRoute(
-            page: const RecomendationsPage(),
+            page: BlocProvider.value(
+              value: context
+                  .read<AiMealCubit>(), // reuses the same instance with data
+              child: const RecomendationsPage(),
+            ),
             transitionType: TransitionType.slide,
           ),
         );

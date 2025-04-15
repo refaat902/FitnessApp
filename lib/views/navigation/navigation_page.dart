@@ -5,7 +5,6 @@ import 'package:flutter_application_1/views/navigation/home/home_page.dart';
 import 'package:flutter_application_1/views/navigation/meals/meals_page.dart';
 import 'package:flutter_application_1/views/navigation/profile/data/cubit/profile_cubit.dart';
 import 'package:flutter_application_1/views/navigation/profile/profile_page.dart';
-import 'package:flutter_application_1/views/userprofile/user_profile_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -43,6 +42,7 @@ class _NavigationPageState extends State<NavigationPage> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Colors.black.withOpacity(0.05),
               spreadRadius: 1,
               blurRadius: 8,

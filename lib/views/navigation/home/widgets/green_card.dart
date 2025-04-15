@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/start/start_page.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/back_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/chest_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/legs_cubit.dart';
-import 'package:flutter_application_1/views/startexe/start_exe_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -79,14 +79,14 @@ class GreenCard extends StatelessWidget {
                                         create: (context) =>
                                             getIt<LegsCubit>()),
                                   ],
-                                  child: const StartExePage(),
+                                  child: const StartPage(),
                                 ),
                                 transitionType: TransitionType.slide,
                               ),
                             );
                           },
                           child: Text(
-                            "Start Exercise",
+                            "Start",
                             style: GoogleFonts.dmSans(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

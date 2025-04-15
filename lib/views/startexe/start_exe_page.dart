@@ -26,17 +26,6 @@ class _StartExePageState extends State<StartExePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Start Exercise'),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.black,
-              )),
-        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(

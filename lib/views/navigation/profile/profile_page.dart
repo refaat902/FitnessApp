@@ -70,16 +70,6 @@ class _ProfilePageState extends State<ProfilePage> {
           title: "Email",
           value: profile.email ?? "Not provided",
         ),
-
-        const SizedBox(height: 16),
-
-        // Phone Info Card
-        _buildInfoCard(
-          context: context,
-          icon: Icons.phone_outlined,
-          title: "Phone",
-          value: profile.phoneNumber ?? "Not provided",
-        ),
       ],
     );
   }

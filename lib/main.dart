@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/core/helpers/shared_pref_helper.dart';
+import 'package:flutter_application_1/core/widgets/pc.dart';
+import 'package:flutter_application_1/core/widgets/prs.dart';
 import 'package:flutter_application_1/views/navigation/navigation_page.dart';
 import 'package:flutter_application_1/views/pageview/pageview.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,9 +16,15 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
   Future<bool> _checkUserLoggedIn() async {
     return await SharedPrefService.isUserLoggedIn();
   }
+  
+  Future<bool> _checkPermissions() async {
+    return await PermissionService.areAllPermissionsGranted();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -104,20 +112,32 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-             home: FutureBuilder<bool>(
-        future: _checkUserLoggedIn(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+        home: FutureBuilder<List<bool>>(
+          // Use Future.wait to run both checks in parallel
+          future: Future.wait([
+            _checkUserLoggedIn(),
+            _checkPermissions(),
+          ]),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          if (snapshot.data == true) {
-            return const NavigationPage(); // ← Go here if logged in
-          } else {
-            return const PageViewWithSlider(); // ← Onboarding/Login screen
-          }
-        },
-      ),
+            // Extract results
+            final isLoggedIn = snapshot.data?[0] ?? false;
+            final permissionsGranted = snapshot.data?[1] ?? false;
+
+            // If permissions are not granted, show permission screen
+            if (!permissionsGranted) {
+              return PermissionRequestScreen(isLoggedIn: isLoggedIn);
+            }
+
+            // If permissions are granted, proceed based on login status
+            return isLoggedIn 
+                ? const NavigationPage() 
+                : const PageViewWithSlider();
+          },
+        ),
     );
   }
 }

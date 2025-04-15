@@ -1,6 +1,6 @@
 part of 'bodyweight_cubit.dart';
 
-@immutable
+
 sealed class BodyweightState {}
 
 final class BodyweightInitial extends BodyweightState {}

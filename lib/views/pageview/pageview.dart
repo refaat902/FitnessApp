@@ -5,7 +5,6 @@ import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/Login/data/cubit/login_cubit.dart';
 import 'package:flutter_application_1/views/Login/login_page.dart';
-import 'package:flutter_application_1/views/questions/age/age_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageViewWithSlider extends StatefulWidget {

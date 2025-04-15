@@ -12,8 +12,8 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void emitCreateNewUSer(SignUpRequestModel signUpRequestModel) {
     try {
-      signupRepo.createNewUser(signUpRequestModel).then((signUpRequestModel) {
-        emit(CreateNewUSerSuccessState(signUpResponsetModel: signUpRequestModel));
+      signupRepo.createNewUser(signUpRequestModel).then((signUpResponseModel) {
+        emit(CreateNewUSerSuccessState(signUpResponsetModel: signUpResponseModel));
       });
     } catch (e) {
       print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");

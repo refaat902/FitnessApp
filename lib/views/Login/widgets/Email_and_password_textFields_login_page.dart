@@ -1,60 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
-
-// class EmailAndPasswordTextfieldsLoginPage extends StatelessWidget {
-//   const EmailAndPasswordTextfieldsLoginPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Row(
-//           children: [
-//             Text(
-//               "Email address",
-//               style: Theme.of(context).textTheme.labelLarge,
-//             )
-//           ],
-//         ),
-//         SizedBox(
-//           height: MediaQuery.sizeOf(context).height * .01,
-//         ),
-//         TextFormField(
-//           cursorColor: const Color(0xff289004),
-//           decoration: InputDecoration(
-//               hintText: "johnwelles@gmail.com",
-//               hintStyle: Theme.of(context).textTheme.labelMedium),
-//         ),
-//         SizedBox(
-//           height: MediaQuery.sizeOf(context).height * .01,
-//         ),
-//         Row(
-//           children: [
-//             Text(
-//               "Password",
-//               style: Theme.of(context).textTheme.labelLarge,
-//             )
-//           ],
-//         ),
-//         SizedBox(
-//           height: MediaQuery.sizeOf(context).height * .01,
-//         ),
-//         TextFormField(
-//           cursorColor: const Color(0xff289004),
-//           decoration: InputDecoration(
-//               hintText: "*****",
-//               hintStyle: Theme.of(context).textTheme.labelMedium),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-
-
-
+// ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class EmailAndPasswordTextfieldsLoginPage extends StatelessWidget {
   const EmailAndPasswordTextfieldsLoginPage({super.key});

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
-import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/data/cubit/fav_meal_cubit.dart';
-import 'package:flutter_application_1/views/navigation/home/favorites/favoritemeals/favorite_meals.dart';
-import 'package:flutter_application_1/views/navigation/home/favorites/favoriteworkout/data/cubit/fav_exercise_cubit.dart';
-import 'package:flutter_application_1/views/navigation/home/favorites/favoriteworkout/favorite_workout_page.dart';
+import 'package:flutter_application_1/views/aimeal/data/cubit/ai_meal_cubit.dart';
+import 'package:flutter_application_1/views/startexe/data/cubit/back_cubit.dart';
+import 'package:flutter_application_1/views/startexe/data/cubit/chest_cubit.dart';
+import 'package:flutter_application_1/views/startexe/data/cubit/legs_cubit.dart';
+import 'package:flutter_application_1/views/startexe/start_exe_page.dart';
+import 'package:flutter_application_1/views/userprofile/user_profile_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FavoritesPage extends StatelessWidget {
-  const FavoritesPage({super.key});
+class StartPage extends StatelessWidget {
+  const StartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class FavoritesPage extends StatelessWidget {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                title: const Text("My Favorites"),
+                title: const Text("Ai Featuers"),
                 leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -38,7 +40,7 @@ class FavoritesPage extends StatelessWidget {
                       .bodySmall
                       ?.copyWith(color: Colors.white),
                   indicator: const BoxDecoration(
-                      color: Color(0xff289004),
+                      color: Colors.black,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   dividerHeight: 0,
                   overlayColor: WidgetStateColor.transparent,
@@ -53,12 +55,18 @@ class FavoritesPage extends StatelessWidget {
           body: TabBarView(
             children: [
               BlocProvider(
-                create: (context) => getIt<FavMealCubit>(),
-                child: const FavoriteMeals(),
+                create: (context) => getIt<AiMealCubit>(),
+                child: const UserProfilePage(),
               ),
-              BlocProvider(
-                create: (context) => getIt<FavExerciseCubit>(),
-                child: const FavoriteWorkoutPage(),
+              MultiBlocProvider(
+                providers: [
+                  BlocProvider(create: (context) => getIt<ChestCubit>()),
+                  BlocProvider(
+                    create: (context) => getIt<BackCubit>(),
+                  ),
+                  BlocProvider(create: (context) => getIt<LegsCubit>()),
+                ],
+                child: const StartExePage(),
               ),
             ],
           ),

@@ -6,6 +6,7 @@ class TextFormFieldsSignup extends StatefulWidget {
   static final emailController = TextEditingController();
   static final passwordController = TextEditingController();
   static final confirmPasswordController = TextEditingController();
+  static final phoneController = TextEditingController();
   const TextFormFieldsSignup({super.key});
 
   @override

@@ -1,6 +1,6 @@
 part of 'fav_meal_cubit.dart';
 
-@immutable
+
 sealed class FavMealState {}
 
 final class FavMealInitial extends FavMealState {}

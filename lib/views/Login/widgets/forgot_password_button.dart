@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/forgotpass/forgot_pass_page.dart';
 
