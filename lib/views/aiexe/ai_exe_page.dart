@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
+import 'package:flutter_application_1/views/webview/websocket_test_page.dart';
 import 'package:flutter_application_1/views/webview/webview_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -181,7 +182,13 @@ class AiExePage extends StatelessWidget {
                           onPressed: aiModel == null || aiModel!.isEmpty
                               ? null
                               : () {
-                                
+                                                            Navigator.push(
+                              context,
+                              CustomPageRoute(
+                                page: const WebSocketTestPage(),
+                                transitionType: TransitionType.slide,
+                              ),
+                            );
                                 },
                         ),
                       ),
