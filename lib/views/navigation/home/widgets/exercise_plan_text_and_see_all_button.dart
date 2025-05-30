@@ -39,22 +39,22 @@ class ExercisePlanTextAndSeeAllButton extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              TextButton(
-                onPressed: () {
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: const Color(0xff289004),
-                  padding: EdgeInsets.zero,
-                ),
-                child: Text(
-                  "See all",
-                  style: GoogleFonts.dmSans(
-                    color: const Color(0xff289004),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
+              // TextButton(
+              //   onPressed: () {
+              //   },
+              //   style: TextButton.styleFrom(
+              //     foregroundColor: const Color(0xff289004),
+              //     padding: EdgeInsets.zero,
+              //   ),
+              //   child: Text(
+              //     "See all",
+              //     style: GoogleFonts.dmSans(
+              //       color: const Color(0xff289004),
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: 16,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           SizedBox(height: MediaQuery.sizeOf(context).height * .02),

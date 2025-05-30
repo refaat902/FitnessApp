@@ -245,7 +245,7 @@ class _FavoriteWorkoutPageState extends State<FavoriteWorkoutPage> {
   Widget _buildDetailChip(IconData icon, String label, double width, double height) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: width * 0.02,
+        horizontal: width * 0.01,
         vertical: height * 0.004,
       ),
       decoration: BoxDecoration(
@@ -262,7 +262,7 @@ class _FavoriteWorkoutPageState extends State<FavoriteWorkoutPage> {
             size: width * 0.035,
             color: primaryGreen,
           ),
-          SizedBox(width: width * 0.01),
+          // SizedBox(width: width * 0.01),
           Text(
             label,
             style: TextStyle(

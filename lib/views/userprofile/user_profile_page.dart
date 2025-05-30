@@ -286,15 +286,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(value),
-                                if (activityLevelDescriptions.containsKey(value))
-                                  Text(
-                                    activityLevelDescriptions[value]!,
-                                    style: TextStyle(
-                                      fontSize: screenWidth * 0.03,
-                                      color: Colors.grey[600],
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
                               ],
                             ),
                           );

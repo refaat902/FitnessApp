@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/di/injection.dart';
 import 'package:flutter_application_1/views/aimeal/data/cubit/ai_meal_cubit.dart';
+import 'package:flutter_application_1/views/startexe/data/cubit/arm_cubit_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/back_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/chest_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/legs_cubit.dart';
@@ -60,6 +61,7 @@ class StartPage extends StatelessWidget {
               ),
               MultiBlocProvider(
                 providers: [
+                  BlocProvider(create: (context) => getIt<ArmCubitCubit>()),
                   BlocProvider(create: (context) => getIt<ChestCubit>()),
                   BlocProvider(
                     create: (context) => getIt<BackCubit>(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/transitions/transitions_class.dart';
 import 'package:flutter_application_1/views/aiexe/ai_exe_page.dart';
 import 'package:flutter_application_1/views/category/widgets/shimmer_effect.dart';
+import 'package:flutter_application_1/views/startexe/data/cubit/arm_cubit_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/back_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/chest_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/legs_cubit.dart';
@@ -19,9 +20,11 @@ class _StartExePageState extends State<StartExePage> {
   @override
   void initState() {
     super.initState();
+    BlocProvider.of<ArmCubitCubit>(context).emitExeByMuscleGroupLegs('Arms');
     BlocProvider.of<ChestCubit>(context).emitExeByMuscleGroupChest('Chest');
     BlocProvider.of<BackCubit>(context).emitExeByMuscleGroupBack('Back');
     BlocProvider.of<LegsCubit>(context).emitExeByMuscleGroupLegs('Legs');
+
   }
   
   // Function to get difficulty color
@@ -71,6 +74,49 @@ class _StartExePageState extends State<StartExePage> {
           ),
           child: Column(
             children: [
+                            // Chest Section
+              _buildSectionHeader(
+                context: context,
+                title: "Arm",
+                icon: Icons.fitness_center,
+                screenWidth: screenWidth,
+              ),
+              BlocBuilder<ArmCubitCubit, ArmCubitState>(
+                builder: (context, state) {
+                  if (state is GetExeByMuscleGroupArmSuccessState) {
+                    return _buildExerciseList(
+                      context: context,
+                      exercisesList: state.exeByMuscleGroupArmsList,
+                      screenHeight: screenHeight,
+                      screenWidth: screenWidth,
+                      muscleColor: const Color(0xFFF97B22), // Orange for chest
+                      navigateToExercise: (index) {
+                        Navigator.push(
+                          context,
+                          CustomPageRoute(
+                            page: AiExePage(
+                              image: state.exeByMuscleGroupArmsList[index].imageUrl.toString(),
+                              name: state.exeByMuscleGroupArmsList[index].name.toString(),
+                              youtubeUrl: state.exeByMuscleGroupArmsList[index].videoUrl.toString(),
+                              aiModel: state.exeByMuscleGroupArmsList[index].aiModelReference ?? '',
+                              instructionSteps: state.exeByMuscleGroupArmsList[index].instructionSteps.toString(),
+                            ),
+                            transitionType: TransitionType.slide,
+                          ),
+                        );
+                      },
+                    );
+                  } else {
+                    return Container(
+                      height: screenHeight * 0.3,
+                      margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                      child: const ShimmerListTile(),
+                    );
+                  }
+                },
+              ),
+
+              SizedBox(height: screenHeight * 0.02),
               // Chest Section
               _buildSectionHeader(
                 context: context,

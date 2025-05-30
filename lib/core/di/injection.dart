@@ -23,6 +23,7 @@ import 'package:flutter_application_1/views/navigation/home/favorites/favoritewo
 import 'package:flutter_application_1/views/navigation/home/favorites/favoriteworkout/data/repository/get_fav_exercise_repo.dart';
 import 'package:flutter_application_1/views/navigation/profile/data/cubit/profile_cubit.dart';
 import 'package:flutter_application_1/views/navigation/profile/data/repository/profile_repo.dart';
+import 'package:flutter_application_1/views/startexe/data/cubit/arm_cubit_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/back_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/chest_cubit.dart';
 import 'package:flutter_application_1/views/startexe/data/cubit/legs_cubit.dart';
@@ -68,6 +69,7 @@ void setup() {
   getIt.registerFactory<ChestCubit>(()=> ChestCubit(getIt()));
   getIt.registerFactory<BackCubit>(()=> BackCubit(getIt()));
   getIt.registerFactory<LegsCubit>(()=> LegsCubit(getIt()));
+  getIt.registerFactory<ArmCubitCubit>(()=> ArmCubitCubit(getIt()));
   getIt.registerFactory<GetExeByMuscleGroupRepo>(()=> GetExeByMuscleGroupRepo(getIt()));
 
   getIt.registerFactory<WebServices>(()=> WebServices(Dio()));
